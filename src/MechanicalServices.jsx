@@ -11,7 +11,7 @@ const curve=(a,b,p,control)=>({x:(1-p)**2*a.x+2*(1-p)*p*((a.x+b.x)/2)+p*p*b.x,y:
 
 export default function MechanicalServices(){
  const stage=useRef(null),runtime=useRef({}),slots=useRef([0,1,2,3,4,5]);
- const [paused,setPaused]=useState(false),[reduced,setReduced]=useState(false);
+ const [reduced,setReduced]=useState(false);
  useEffect(()=>{
   const media=matchMedia('(prefers-reduced-motion: reduce)');const update=()=>setReduced(media.matches);update();media.addEventListener('change',update);return()=>media.removeEventListener('change',update);
  },[]);
@@ -21,7 +21,7 @@ export default function MechanicalServices(){
   const cards=[...el.querySelectorAll('[data-service-card]')];  const reset=()=>{cards.forEach(c=>{c.style.transform='';c.style.zIndex='';c.classList.remove('is-carried')});cycle=null;idle=0};
   const begin=()=>{const bounds=el.getBoundingClientRect();const positions=[];cards.forEach((card,id)=>{const r=card.getBoundingClientRect();positions[slots.current[id]]={x:r.x-bounds.x,y:r.y-bounds.y,width:r.width}});cycle={time:0,positions,w:bounds.width,h:bounds.height};el.dataset.motion='running'};
   const tick=now=>{if(disposed)return;const dt=last?Math.min(now-last,60):0;last=now;const state=runtime.current;
-   if(state.paused||state.reduced||!inView||document.hidden){raf=requestAnimationFrame(tick);return}
+   if(state.reduced||!inView||document.hidden){raf=requestAnimationFrame(tick);return}
    if(!cycle){idle+=dt;if(idle>=2400)begin();raf=requestAnimationFrame(tick);return}
    cycle.time+=dt;const progress=Math.min(cycle.time/3400,1),p=ease(progress);
    cards.forEach((card,id)=>{const oldSlot=slots.current[id],next=ring[(ring.indexOf(oldSlot)+1)%ring.length],a=cycle.positions[oldSlot],b=cycle.positions[next];const point=lerp(a,b,p);if(oldSlot===2)point.x-=Math.sin(p*Math.PI)*Math.min(18,cycle.w*.025);if(oldSlot===3)point.x+=Math.sin(p*Math.PI)*Math.min(18,cycle.w*.025);card.style.transform=`translate(${point.x-a.x}px,${point.y-a.y}px)`;card.style.zIndex='2';card.classList.add('is-carried');
@@ -33,6 +33,6 @@ export default function MechanicalServices(){
   runtime.current.reset=()=>{reset();el.dataset.motion='idle'};
   return()=>{disposed=true;cancelAnimationFrame(raf);observer.disconnect();resize.disconnect();reset()};
  },[]);
- useEffect(()=>{runtime.current.paused=paused;runtime.current.reduced=reduced;if(reduced)runtime.current.reset?.()},[paused,reduced]);
- return <div className="mechanical-services"><div className="mechanical-stage" onMouseEnter={()=>setPaused(true)} onMouseLeave={()=>setPaused(false)} ref={stage} data-motion="idle"><div className="service-grid">{labels.map((label,i)=><div className="service-motion-card" data-service-card={i} key={photos[i].key} style={{order:i}}><ImageServiceCard image={photos[i].image} imageAlt={(lang==='en'?englishAlt[i]:photos[i].alt)+t(' — صورة توضيحية للخدمة')} title={t(label)}/></div>)}</div></div></div>
+ useEffect(()=>{runtime.current.reduced=reduced;if(reduced)runtime.current.reset?.()},[reduced]);
+ return <div className="mechanical-services"><div className="mechanical-stage" ref={stage} data-motion="idle"><div className="service-grid">{labels.map((label,i)=><div className="service-motion-card" data-service-card={i} key={photos[i].key} style={{order:i}}><ImageServiceCard image={photos[i].image} imageAlt={(lang==='en'?englishAlt[i]:photos[i].alt)+t(' — صورة توضيحية للخدمة')} title={t(label)}/></div>)}</div></div></div>
 }
