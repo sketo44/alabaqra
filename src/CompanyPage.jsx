@@ -1,0 +1,34 @@
+import React from 'react';
+import {lang,localHref,t} from './i18n';
+import {BrandButton,Icon} from './design-system/components';
+import EngineeringBackdrop from './design-system/EngineeringBackdrop';
+import {SourceDocument} from './ArchiveViews';
+
+export default function CompanyPage({get,body,pageLink}){
+ const en=lang==='en';const c=(ar,english)=>en?english:ar;
+ const labels={vision:c('رؤيتنا','Our vision'),mission:c('رسالتنا','Our mission'),goal:c('هدفنا','Our goal'),values:c('قيمنا','Our values')};
+ return <div className="company-redesign"><EngineeringBackdrop/>
+  <section className="company-hero">
+   <img className="company-hero-photo" src="/assets/company/male-engineers.webp" width="1600" height="1067" fetchPriority="high" alt={c('مهندسان رجال يراجعان مخططًا — صورة توضيحية وليست لفريق الشركة','Two male engineers reviewing plans — illustrative photo, not company staff')}/>
+   <div className="wrap company-hero-content"><p className="eyebrow">{t('عن العباقرة')}</p><h1>{c('نبني بإتقان.','Built with care.')}<span>{c('ونعتني بكل تفصيل.','Every detail cared for.')}</span></h1><p>{c('شركة العباقرة للتجارة والمقاولات المحدودة، خدمات في المقاولات والتشغيل والصيانة للقطاعين الحكومي والخاص في المملكة العربية السعودية.','Alabaqra Trading & Contracting Co. Ltd. provides contracting, operations and maintenance services for public and private sectors in Saudi Arabia.')}</p><BrandButton href={localHref('/projects')} variant="secondary">{t('المشاريع والإنجازات')}<Icon name="arrow"/></BrandButton></div>
+  </section>
+  <section className="identity-band company-identity"><div className="wrap"><div><strong>{t('أكثر من ٣٥ عامًا')}</strong></div><div><strong>{t('القصيم، بريدة')}</strong></div><div><strong>{t('مقاولات • تشغيل • صيانة')}</strong></div></div></section>
+  <section className="wrap company-story">
+   <div><p className="eyebrow">{c('من نحن','Who we are')}</p><h2>{c('خدمات للمرافق.','Services for facilities.')}<br/>{c('وعناية بما يحيط بها.','Care for their surroundings.')}</h2></div>
+   <div><p>{c('تأسست العباقرة لتوفير خدمات إدارة أعمال الصيانة والمقاولات والتشغيل والخدمات المرتبطة بها في أنحاء المملكة. ومن مقرها في بريدة، يجمع نشاطها بين العناية بالمباني والطرق، وأعمال المياه والكهرباء، ونظافة المدن والحدائق.','Alabaqra was established to provide maintenance management, contracting, operations and related services across the Kingdom. Based in Buraydah, its activities cover buildings and roads, water and electrical services, city cleaning and gardens.')}</p><a className="text-link" href={pageLink(get(5))}>{c('تفاصيل الشركة من المصدر','Company details from the source')}<Icon name="external"/></a></div>
+  </section>
+  <section className="company-principles"><EngineeringBackdrop/><div className="wrap">
+   <div className="section-title"><div><p className="eyebrow">{c('ما نطمح إليه','Our ambition')}</p><h2>{c('رؤية واضحة. وعمل له غاية.','A clear vision. Purposeful work.')}</h2></div></div>
+   <div className="company-principle-grid">{[[20,labels.vision,'vision'],[7,labels.mission,'mission'],[6,labels.goal,'goal']].map(([id,title,kind])=><article className="ds-card company-principle-card" key={id}><img className={'company-principle-photo company-principle-photo--'+kind} src={'/assets/company/'+(kind==='goal'?'company-goal':kind)+'.webp'} width="1200" height="800" loading="lazy" alt={kind==='vision'?c('مدينة حديثة ومساحات خضراء — صورة توضيحية للرؤية','Modern city and green spaces — illustrative vision photo'):kind==='mission'?c('مهندسان رجال يراجعان مخطط عمل — صورة توضيحية للرسالة','Two male engineers reviewing blueprints — illustrative mission photo'):c('مخططات هندسية وخوذة ومفتاح — صورة توضيحية للهدف','Blueprints, hard hat and key — illustrative goal photo')}/><div className="ds-card-body"><h3>{title}</h3><p>{kind==='goal'?c('أن نصبح واحدة من أكبر الشركات في المملكة في خدمات المقاولات ونظافة المدن والتخلص من النفايات وتشغيل وصيانة الأعمال الكهربائية والمياه والصرف الصحي.','To become one of the Kingdom’s largest providers of contracting, city cleaning, waste disposal, and electrical, water and wastewater operations and maintenance.'):body(get(id))}</p><a className="text-link principle-detail" href={pageLink(get(id))}>{c('النص الكامل','Full statement')}<Icon name="external"/></a></div></article>)}</div>
+  </div></section>
+  <section className="wrap company-values">
+   <div className="company-values-photo"><img src="/assets/services/gardens.webp" width="960" height="720" loading="lazy" alt={c('العناية بالحدائق — صورة توضيحية','Garden maintenance — illustrative photo')}/><span>{c('نزرع ونحافظ على بيئتنا','We nurture our environment')}</span></div>
+   <div><p className="eyebrow">{labels.values}</p><h2>{c('المصداقية والالتزام.','Credibility and commitment.')}</h2><p className="company-source-copy">{body(get(9)).replace(/\u00a0/g,' ')}</p><BrandButton href={pageLink(get(21))}>{c('مسؤوليتنا الاجتماعية','Our social responsibility')}<Icon name="arrow"/></BrandButton></div>
+  </section>
+  <section className="company-scope"><div className="wrap">
+   <div className="section-title"><div><p className="eyebrow">{t('خدماتنا')}</p><h2>{c('البناء بداية. والعناية تستمر.','Building begins. Care continues.')}</h2></div><a className="text-link" href={localHref('/#services')}>{c('استعرض الخدمات','Explore services')}<Icon name="external"/></a></div>
+   <div className="company-scope-grid"><img src="/assets/services/electric.webp" alt={c('صيانة لوحة كهربائية — صورة توضيحية','Electrical board maintenance — illustrative photo')} width="960" height="720" loading="lazy"/><div><h3>{c('تشغيل وصيانة ونظافة','Operations, maintenance & cleaning')}</h3><p>{c('يشمل النشاط المعلن صيانة المباني والطرق، وتشغيل وصيانة أعمال المياه والصرف الصحي والأعمال الكهربائية والميكانيكية، ونظافة المدن والتخلص من النفايات، وصيانة الحدائق والمنتزهات.','Published activities include building and road maintenance; water, wastewater, electrical and mechanical operations and maintenance; city cleaning and waste disposal; and garden and park maintenance.')}</p><a className="text-link" href={localHref('/projects')}>{c('أعمال الشركة المنشورة','Published company work')}<Icon name="external"/></a></div></div>
+  </div></section>
+  <section className="wrap company-more"><h2>{c('اكتشف المزيد عن العباقرة','Discover more about Alabaqra')}</h2><div className="company-links">{[8,11,21,23].map(id=><a key={id} href={pageLink(get(id))}>{get(id).title}<Icon name="external"/></a>)}</div><details className="company-source-details"><summary>{c('بيانات الشركة كما وردت في الموقع الأصلي','Company information as published in the original website')}</summary><p className="source-note">{c('بيانات تاريخية من المصدر؛ أعداد العاملين والتصنيف لا تؤكد الوضع الحالي.','Historical source information; workforce figures and classifications do not confirm current status.')}</p><SourceDocument page={get(5)} body={body} hideTitle/></details></section>
+ </div>
+}

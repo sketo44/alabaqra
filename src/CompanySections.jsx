@@ -1,0 +1,17 @@
+import CareersForm from './CareersForm';
+import React from 'react';
+import {lang,localHref,t} from './i18n';
+import {BrandButton,Icon} from './design-system/components';
+import {GalleryArchive,SourceDocument} from './ArchiveViews';
+
+const c=(ar,en)=>lang==='en'?en:ar;
+export default function CompanySections({section,get,body,pages,homepageGallery}){
+ if(section==='contact')return <section className="wrap content-page company-section"><div className="page-heading"><p className="eyebrow">{t('شركة العباقرة للتجارة والمقاولات المحدودة')}</p><h1>{t('اتصل بنا')}</h1><p>{c('يسعدنا تواصلك عبر قنوات الشركة المنشورة.','Reach the company through its published contact channels.')}</p></div><div className="contact-page-grid">
+ <article className="ds-card channel-card"><span className="ds-icon-tile"><Icon name="building"/></span><h2>{c('المقر الرئيسي','Head office')}</h2><p>{t('القصيم — بريدة — طريق المعارض')}<br/>{t('حي الرحاب بالراشديات')}</p><BrandButton variant="secondary" href="https://www.google.com/maps/search/?api=1&query=شركة+العباقرة+بريدة+الرحاب" target="_blank" rel="noreferrer">{c('البحث في الخرائط','Search maps')}<Icon name="external"/></BrandButton></article>
+ <article className="ds-card channel-card"><span className="ds-icon-tile"><Icon name="maintenance"/></span><h2>{c('الهاتف','Telephone')}</h2><a className="contact-number" href="tel:920009995"><bdi dir="ltr">920009995</bdi></a><a className="contact-number" href="tel:0163836446"><bdi dir="ltr">016 383 6446</bdi></a><a className="contact-number" href="tel:0163812722"><bdi dir="ltr">016 381 2722</bdi></a><p>{t('الفاكس: ')}<bdi dir="ltr">0163834507 / 0163855351</bdi></p></article>
+ <article className="ds-card channel-card"><span className="ds-icon-tile"><Icon name="mail"/></span><h2>{c('البريد الإلكتروني','Email')}</h2><a href="mailto:alabaqra@alabaqra.sa"><bdi dir="ltr">alabaqra@alabaqra.sa</bdi></a><a href="mailto:alabaqra@hotmail.com"><bdi dir="ltr">alabaqra@hotmail.com</bdi></a><a className="source-link" href={get(17).url} target="_blank" rel="noreferrer">{c('بيانات التواصل في المصدر','Contact details in the source')}<Icon name="external"/></a></article>
+ </div><div className="section-next"><h2>{c('تبحث عن فرصة عمل؟','Looking for career opportunities?')}</h2><BrandButton href={localHref('/careers')}>{t('التوظيف')}<Icon name="arrow"/></BrandButton></div></section>;
+ if(section==='careers')return <CareersForm/>;
+ const images=[...new Set([...(get(21)?.images||[]),...homepageGallery])];
+ return <section className="wrap content-page company-section"><div className="page-heading"><p className="eyebrow">{c('المسؤولية الاجتماعية','Social responsibility')}</p><h1>{t('التكريمات')}</h1><p>{c('صور التكريم والمشاركات المنشورة في موقع الشركة، توثّق حضورها في المناسبات والأنشطة المجتمعية.','Recognition and participation photos from the company website document its presence at community events and activities.')}</p></div><GalleryArchive images={images} pages={pages} homepageGallery={images} filterable={false}/><details className="company-source-details awards-source"><summary>{c('المسؤولية الاجتماعية والتكريمات في سجل الشركة','Social responsibility and recognition in the company record')}</summary><SourceDocument page={get(21)} body={body} hideTitle/></details><div className="section-next"><h2>{c('المزيد من الصور','More images')}</h2><BrandButton href={localHref('/gallery')}>{t('معرض الصور')}<Icon name="arrow"/></BrandButton></div></section>;
+}

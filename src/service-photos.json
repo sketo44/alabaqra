@@ -1,0 +1,62 @@
+[
+  {
+    "key": "roads",
+    "image": "/assets/services/roads.webp",
+    "source": "https://www.pexels.com/photo/people-working-on-road-9534834/",
+    "photographer": "Danila Popov",
+    "alt": "عمال ينفذون أعمال صيانة طرق",
+    "license": "https://www.pexels.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 457828
+  },
+  {
+    "key": "water",
+    "image": "/assets/services/water.webp",
+    "source": "https://www.pexels.com/photo/plumber-installs-pipe-fittings-6419128/",
+    "photographer": "Anıl Karakaya",
+    "alt": "تركيب وصيانة أنابيب المياه",
+    "license": "https://www.pexels.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 113534
+  },
+  {
+    "key": "electric",
+    "image": "/assets/services/electric.webp",
+    "source": "https://www.pexels.com/photo/electrician-by-fuse-box-17842832/",
+    "photographer": "Fatih Yurtman",
+    "alt": "فني يعمل على لوحة كهربائية",
+    "license": "https://www.pexels.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 75808
+  },
+  {
+    "key": "cleaning",
+    "image": "/assets/services/cleaning.webp",
+    "source": "https://www.pexels.com/photo/street-cleaning-scene-with-worker-and-vehicle-33620291/",
+    "photographer": "Tahir Xəlfəquliyev",
+    "alt": "عامل وآلة لتنظيف الشوارع",
+    "license": "https://www.pexels.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 146884
+  },
+  {
+    "key": "gardens",
+    "image": "/assets/services/gardens.webp",
+    "source": "https://www.pexels.com/photo/man-trimming-hedges-with-garden-shears-38936347/",
+    "photographer": "Magda Ehlers",
+    "alt": "تقليم الأشجار والعناية بالحدائق",
+    "license": "https://www.pexels.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 54672
+  },
+  {
+    "key": "construction",
+    "image": "/assets/services/construction-riyadh.webp",
+    "source": "https://unsplash.com/photos/a-large-building-under-construction-with-a-crane-7TG1fm1RdYU",
+    "photographer": "Nojood Al Aqeel",
+    "alt": "أعمال إنشاء في المجمع الملكي للفنون بحديقة الملك سلمان، الرياض",
+    "license": "https://unsplash.com/license/",
+    "usage": "صورة توضيحية للخدمة وليست مشروعًا أو موظفًا للشركة",
+    "bytes": 299882
+  }
+]
