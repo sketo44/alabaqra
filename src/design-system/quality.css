@@ -275,3 +275,19 @@
 .client-section .client-logo{box-shadow:var(--shadow-none);border-color:var(--color-transparent)}
 .client-section .client-logo--on-dark{background:var(--color-ink);border-color:var(--color-control-border)}
 .client-section h2{font-weight:var(--weight-medium)}
+/* Compact, aligned footer: brand, phones, email; no oversized empty columns. */
+.site-brand .contact{padding-block:var(--space-6);background:var(--color-overlay)}
+.site-brand .contact-inner{grid-template-columns:1.15fr .8fr 1fr;gap:var(--space-8);align-items:start}
+.site-brand .contact-inner>div{min-inline-size:0}
+.site-brand .contact-inner .footer-logo{inline-size:220px;max-inline-size:100%;block-size:auto;margin-block-end:var(--space-2)}
+.site-brand .contact-inner h2,.site-brand .contact-inner h3{font-size:var(--type-small);line-height:var(--leading-heading);margin-block-end:var(--space-2);color:var(--color-on-primary)}
+.site-brand .contact-inner p{margin:0;font-size:var(--type-compact)}
+.site-brand .contact-inner :is(.contact-phones,.contact-emails){display:flex;flex-direction:column;gap:0;align-items:start}
+.site-brand .contact-inner a{font-size:var(--type-small);min-block-size:var(--size-control);gap:var(--space-2);line-height:var(--leading-label)}
+.site-brand .contact-inner small{font-size:var(--type-caption);line-height:var(--leading-body);margin-block-start:var(--space-1)}
+.site-brand .footer-primary-links{margin-block-start:var(--space-4);padding-block:var(--space-2);gap:var(--space-2) var(--space-5)}
+.site-brand .footer-primary-links a{font-size:var(--type-compact)}
+.site-brand .footer-archive summary{font-size:var(--type-compact)}
+.site-brand footer{padding-block:var(--space-3);gap:var(--space-2) var(--space-4);align-items:center}
+.site-brand footer>p{margin:0;font-size:var(--type-caption)}
+@media(max-width:750px){.site-brand .contact-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}.site-brand .contact-inner>div:first-child{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--space-4);align-items:center}.site-brand .contact-inner .footer-logo{grid-row:1/3;margin:0}.site-brand .contact-inner h2{margin:0}.site-brand .contact-inner a{font-size:var(--type-compact);overflow-wrap:anywhere}.site-brand .contact-inner small bdi{display:block}.site-brand .footer-primary-links{gap:0 var(--space-4)}}
